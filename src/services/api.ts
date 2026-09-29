@@ -3,7 +3,8 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 export type ApiMode = 'mock' | 'api';
 
 export function getCurrentDataMode(): ApiMode {
-  return import.meta.env.VITE_DATA_MODE === 'mock' ? 'mock' : 'api';
+  // The frontend can render its built-in demo dataset when no backend mode is configured.
+  return import.meta.env.VITE_DATA_MODE === 'api' ? 'api' : 'mock';
 }
 
 export interface ApiResponse<T> {
